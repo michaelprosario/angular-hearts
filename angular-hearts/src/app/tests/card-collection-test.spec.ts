@@ -14,13 +14,13 @@ describe('CardCollection', () => {
     card.suite = Suite.Spades;
 
     // act
-    const cardValue = card.cardValue;
+    const cardId = card.cardId;
 
     // assert
-    expect(cardValue).toEqual(card.suite * 100 + card.cardValue);
+    expect(cardId).toEqual(card.suite * 100 + card.cardValue);
   });
 
-  /*
+
   it('#addCard should work happy case', () => {
     // arrange
     const card = new Card();
@@ -33,6 +33,6 @@ describe('CardCollection', () => {
     // assert
     expect(cardCollection.hasCard(card)).toBeTruthy();
   });
-  */
+
 
 });
