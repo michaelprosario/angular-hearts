@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Card } from './core/entities/card';
+import { CardCollection } from './core/entities/card-collection';
+import { CardValue, Suite } from './core/enums/enums';
+import { CardsService } from './core/services/cards-service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-hearts';
+
+  ngOnInit(){
+    let cardsService = new CardsService();
+    let collection = cardsService.createFullDeck();
+    collection.shuffle();
+    collection.printCards();
+  }
+
 }
