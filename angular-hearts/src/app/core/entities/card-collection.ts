@@ -19,6 +19,10 @@ export class CardCollection
     console.log(this.cards);
   }
 
+  getCard() : Card | undefined {
+    return this.cards.pop();
+  }
+
   remove(card: Card){
     if(!card){
       throw new Error("Card is required");

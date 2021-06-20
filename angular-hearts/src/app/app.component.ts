@@ -13,9 +13,9 @@ export class AppComponent {
 
   ngOnInit(){
     let cardsService = new CardsService();
-    let collection = cardsService.createFullDeck();
-    collection.shuffle();
-    collection.printCards();
+    let deck = cardsService.createFullDeck();
+    deck.shuffle();
+    let cardGroups = cardsService.dealTheDeck(deck);
   }
 
 }
