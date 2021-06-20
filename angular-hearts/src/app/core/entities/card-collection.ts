@@ -4,6 +4,10 @@ export class CardCollection
 {
   cards: Array<Card> = [];
 
+  getCardCount(){
+    return this.cards.length;
+  }
+
   add(card: Card) {
     if(!card){
       throw new Error("Card is required");
