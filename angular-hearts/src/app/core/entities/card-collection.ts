@@ -1,8 +1,15 @@
+import { Suite } from '../enums/enums';
 import { Card } from './card';
 
 export class CardCollection
 {
+
   cards: Array<Card> = [];
+
+  countCardsInSuite(suite: Suite) : number {
+    let collection = this.cards.filter(c => c.suite === suite);   
+    return collection.length;
+  }
 
   getCardCount(){
     return this.cards.length;

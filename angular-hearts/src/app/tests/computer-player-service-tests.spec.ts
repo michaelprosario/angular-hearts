@@ -1,5 +1,4 @@
 import { ComputerPlayerService } from "../core/services/computer-player-service";
-import { CardsService } from '../core/services/cards-service';
 import { CardCollection } from '../core/entities/card-collection';
 import { Card } from '../core/entities/card';
 import { CardValue, Suite } from '../core/enums/enums';

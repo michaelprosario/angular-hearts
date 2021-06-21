@@ -1,6 +1,7 @@
 import { CardCollection } from "../core/entities/card-collection";
 import { Card } from '../core/entities/card';
 import { CardValue, Suite } from '../core/enums/enums';
+import { CardsService } from "../core/services/cards-service";
 
 // Straight Jasmine testing without Angular's testing support
 describe('CardCollection', () => {
@@ -33,5 +34,28 @@ describe('CardCollection', () => {
     expect(cardCollection.hasCard(card)).toBeTruthy();
   });
 
+  it('#countCardsInSuite should work', () => {
+    // arrange
+    const service = new CardsService();
+
+    // act
+    let cards = service.createFullDeck();
+    cards.shuffle();
+    let count = cards.countCardsInSuite(Suite.Hearts);
+
+    // assert
+    expect(count).toEqual(13);
+  });
+
+  it('#countCardsInSuite should return zero on empty deck', () => {
+    // arrange
+    let cards = new CardCollection();
+
+    // act    
+    let count = cards.countCardsInSuite(Suite.Hearts);
+
+    // assert
+    expect(count).toEqual(0);
+  });
 
 });

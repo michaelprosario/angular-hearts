@@ -2,9 +2,17 @@
 
 What decisions do I consider as I play hearts?
 
-
-
 # next
+x - card collection / count cards in suite
+- card collection / has queen of spades
+- find highest card in suite
+- find lowest card in suite
+- table state / hearts have been broken
+- table state / leading suite
+- table state / need property to count the number of plays of suite
+- table state / track cards played by table spot
+- table state / track collection of cards on table
+- table state / track where I sit at the table
 
 high
 - work out logic of playing a card
@@ -29,7 +37,7 @@ clubs
 
 spades
 - if I have the queen of spades, i try to avoid playing that suite
-- if I don't have king, queen or ace of spades, play the highest card in spaces
+- if I don't have king, queen or ace of spades, play the highest card in suite
 - if suite lead and I don't have any, play the queen of spades if I have it
 - if suite lead and I don't have any, play hearts if I have it
 - if I have the queen of spades, it's ok to play my lowest spades
