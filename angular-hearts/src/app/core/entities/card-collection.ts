@@ -1,14 +1,54 @@
-import { Suite } from '../enums/enums';
+import { Suite, CardValue } from '../enums/enums';
 import { Card } from './card';
 
 export class CardCollection
 {
-
   cards: Array<Card> = [];
 
   countCardsInSuite(suite: Suite) : number {
-    let collection = this.cards.filter(c => c.suite === suite);   
+    let collection = this.cards.filter(c => c.suite === suite);
     return collection.length;
+  }
+
+  hasQueenOfSpades() : boolean {
+    let collection = this.cards.filter(c => c.suite === Suite.Spades && c.cardValue === CardValue.Queen);
+    return collection.length > 0;
+  }
+
+  getHighestCardInSuite(suite: Suite): Card | undefined {
+    let collection = this.cards.filter(c => c.suite === suite);
+    if(collection.length === 0){
+      return undefined;
+    }else{
+      let highestCardValue = -1;
+      let response: Card = new Card();
+      for(let card of collection){
+        if(card.cardValue > highestCardValue){
+          response = card;
+          highestCardValue = card.cardValue;
+        }
+      }
+
+      return response;
+    }
+  }
+
+  getSmallestCardInSuite(suite: Suite): Card | undefined {
+    let collection = this.cards.filter(c => c.suite === suite);
+    if(collection.length === 0){
+      return undefined;
+    }else{
+      let lowestCardValue = 10000000;
+      let response: Card = new Card();
+      for(let card of collection){
+        if(card.cardValue < lowestCardValue){
+          response = card;
+          lowestCardValue = card.cardValue;
+        }
+      }
+
+      return response;
+    }
   }
 
   getCardCount(){
@@ -45,7 +85,10 @@ export class CardCollection
     }
   }
 
-  hasCard(card: Card): any {
+  hasCard(card: Card): boolean {
+    if(!card)
+      throw new Error("card is not defined");
+
     let response = this.cards.find(c => c.cardId === card.cardId);
     return response !== undefined;
   }

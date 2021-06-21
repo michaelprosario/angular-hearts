@@ -3,7 +3,6 @@ import { Card } from '../core/entities/card';
 import { CardValue, Suite } from '../core/enums/enums';
 import { CardsService } from "../core/services/cards-service";
 
-// Straight Jasmine testing without Angular's testing support
 describe('CardCollection', () => {
   let cardCollection: CardCollection;
   beforeEach(() => { cardCollection = new CardCollection(); });
@@ -51,11 +50,70 @@ describe('CardCollection', () => {
     // arrange
     let cards = new CardCollection();
 
-    // act    
+    // act
     let count = cards.countCardsInSuite(Suite.Hearts);
 
     // assert
     expect(count).toEqual(0);
   });
+
+  it('#hasQueenOfSpades should work', () => {
+    // arrange
+    const service = new CardsService();
+
+    // act
+    let cards = service.createFullDeck();
+    let response: boolean = cards.hasQueenOfSpades();
+
+    // assert
+    expect(response).toEqual(true);
+  });
+
+  it('#getHighestCardInSuite should work', () => {
+    // arrange
+    let cards = new CardsService().createFullDeck();
+
+    // act
+    let card = cards.getHighestCardInSuite(Suite.Hearts);
+
+    // assert
+    expect(card?.cardValue).toEqual(CardValue.Ace);
+  });
+
+  it('#getHighestCardInSuite should work on empty deck', () => {
+    // arrange
+    let cards = new CardCollection();
+
+    // act
+    let card = cards.getHighestCardInSuite(Suite.Hearts);
+
+    // assert
+    expect(card).toBeUndefined();
+  });
+
+  it('#getSmallestCardInSuite should work', () => {
+    // arrange
+    let cards = new CardsService().createFullDeck();
+
+    // act
+    let card = cards.getSmallestCardInSuite(Suite.Hearts);
+
+    // assert
+    expect(card?.cardValue).toEqual(CardValue.Two);
+  });
+
+
+  it('#hasQueenOfSpades should work if queen does not exist', () => {
+    // arrange
+    let cards = new CardCollection();
+
+    // act
+    let response: boolean = cards.hasQueenOfSpades();
+
+    // assert
+    expect(response).toEqual(false);
+  });
+
+
 
 });

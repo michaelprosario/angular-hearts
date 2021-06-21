@@ -4,14 +4,15 @@ What decisions do I consider as I play hearts?
 
 # next
 x - card collection / count cards in suite
-- card collection / has queen of spades
-- find highest card in suite
-- find lowest card in suite
-- table state / hearts have been broken
-- table state / leading suite
-- table state / need property to count the number of plays of suite
+x- card collection / has queen of spades
+x- find highest card in suite
+x- find lowest card in suite
+x- table state / hearts have been broken
+x- table state / leading suite
+x- table state / need property to count the number of plays of suite
+x- table state / track collection of cards on table
+
 - table state / track cards played by table spot
-- table state / track collection of cards on table
 - table state / track where I sit at the table
 
 high
