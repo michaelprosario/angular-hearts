@@ -3,6 +3,7 @@ import { Card } from './card';
 
 export class CardCollection
 {
+
   cards: Array<Card> = [];
 
   countCardsInSuite(suite: Suite) : number {
@@ -30,6 +31,22 @@ export class CardCollection
       }
 
       return response;
+    }
+  }
+
+  getHighestCardBelowCard(card: Card): Card | undefined {
+    let collection = this.cards.filter(c => c.suite === card.suite);
+    if(collection.length === 0){
+      return undefined;
+    }else{
+      let cardValue = card.cardValue;
+      let cards = collection.filter(card => card.cardValue < cardValue);
+      if(cards.length > 0){
+        cards.sort((a,b) => a.cardValue - b.cardValue);
+        return cards[cards.length - 1];
+      }else{
+        return undefined;
+      }
     }
   }
 

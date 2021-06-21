@@ -102,6 +102,36 @@ describe('CardCollection', () => {
     expect(card?.cardValue).toEqual(CardValue.Two);
   });
 
+  it('#getSmallerCardInSuite should work', () => {
+    // arrange
+    let cards = new CardsService().createFullDeck();
+    let card = new Card();
+    card.cardValue = CardValue.Queen;
+    card.suite = Suite.Spades;
+
+    // act
+    let response = cards.getHighestCardBelowCard(card);
+
+    // assert
+    if(response){
+      expect(response.suite).toEqual(Suite.Spades);
+      expect(response.cardValue).toEqual(CardValue.Jack);
+    }
+  });
+
+  it('#getSmallerCardInSuite should return undefined', () => {
+    // arrange
+    let cards = new CardsService().createFullDeck();
+    let card = new Card();
+    card.cardValue = CardValue.Two;
+    card.suite = Suite.Spades;
+
+    // act
+    let response = cards.getHighestCardBelowCard(card);
+
+    // assert
+    expect(response).toBeUndefined();
+  });
 
   it('#hasQueenOfSpades should work if queen does not exist', () => {
     // arrange
