@@ -20,7 +20,6 @@ describe('CardCollection', () => {
     expect(cardId).toEqual(card.suite * 100 + card.cardValue);
   });
 
-
   it('#addCard should work happy case', () => {
     // arrange
     const card = new Card();
